@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj188w46vhdww"]
+
+[ext_resource type="Script" path="res://scripts/config.gd" id="1_asbau"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yus3v"]
+font_size = 26
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_es74u"]
+
+[node name="Config" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_asbau")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cell Size"
+label_settings = SubResource("LabelSettings_yus3v")
+horizontal_alignment = 1
+
+[node name="CellSize" type="SpinBox" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 64.0
+value = 1.0
+alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Ruleset"
+label_settings = SubResource("LabelSettings_yus3v")
+horizontal_alignment = 1
+
+[node name="Ruleset" type="SpinBox" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 255.0
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 65
+theme_override_styles/separator = SubResource("StyleBoxEmpty_es74u")
+
+[node name="RandomRule" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Random Ruleset"
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Show Simulation"
+
+[connection signal="pressed" from="VBoxContainer/RandomRule" to="." method="_on_random_rule_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]

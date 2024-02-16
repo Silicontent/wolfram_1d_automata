@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg2j4s4wkmii5"]
+
+[ext_resource type="Texture2D" uid="uid://uxt7pokfcyg5" path="res://assets/cells.png" id="1_4fy0b"]
+[ext_resource type="Script" path="res://scripts/cellular_automata.gd" id="1_vw0fy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gey82"]
+resource_name = "cell_states"
+texture = ExtResource("1_4fy0b")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b1rfr"]
+tile_size = Vector2i(1, 1)
+sources/0 = SubResource("TileSetAtlasSource_gey82")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lp7pi"]
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_vw0fy")
+
+[node name="Cells" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(16, 16)
+tile_set = SubResource("TileSet_b1rfr")
+format = 2
+
+[node name="LeaveNotice" type="Label" parent="."]
+offset_left = 901.0
+offset_top = 659.0
+offset_right = 1272.0
+offset_bottom = 708.0
+text = "Press SPACE to unpause the simulation.
+Press ESCAPE to return to the main menu."
+label_settings = SubResource("LabelSettings_lp7pi")
+horizontal_alignment = 2
